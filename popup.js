@@ -45,11 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			resultContainer.innerHTML += `<div class="result-item"><strong>JSON-LD:</strong> ${getIcon(seoData.jsonLd)}</div>`;
 			resultContainer.innerHTML += `<div class="result-item"><strong>OWL (Web Ontology Language):</strong> ${getIcon(seoData.owl)}</div>`;
 			const seoRecommendations = generateSEORecommendations(seoData);
+			const seoScore = calculateSEOScore(seoData);
 			const recommendationContainer = document.getElementById('seoRecommendations');
 			recommendationContainer.innerHTML = '<h2>SEO Recommendations</h2>';
 			seoRecommendations.forEach(rec => {
  			recommendationContainer.innerHTML += `<div class="recommendation-item">${rec}</div>`;
 			});
+			const seoScoreContainer = document.getElementById('seoScore');
+			seoScoreContainer.innerHTML = `<h2>SEO Score</h2>${createProgressBar(seoScore)}`;
 		  }
 		  hideLoading();
 		}
@@ -202,8 +205,42 @@ document.addEventListener('DOMContentLoaded', () => {
 	  recommendations.push(`Add alt tags to the ${seoData.imagesWithoutAlt} images that are missing them.`);
 	}
   
+	if (!seoData.sitemapXml) {
+	  recommendations.push("Consider adding a sitemap.xml file.");
+	}
+  
+	if (!seoData.openGraph) {
+	  recommendations.push("Consider using Open Graph tags for better social media integration.");
+	}
+  
+	if (!seoData.jsonLd) {
+	  recommendations.push("Consider using JSON-LD for structured data.");
+	}
+  
 	return recommendations;
   }
+  
+  function calculateSEOScore(seoData) {
+	let score = 0;
+	if (seoData.titleLength >= 50 && seoData.titleLength <= 60) score += 15;
+	if (seoData.metaDescriptionLength >= 150 && seoData.metaDescriptionLength <= 160) score += 15;
+	if (seoData.h1 > 0) score += 15;
+	if (seoData.imagesWithoutAlt === 0) score += 10;
+	if (seoData.canonical) score += 10;
+	if (seoData.sitemapXml) score += 10;
+	if (seoData.openGraph) score += 5;
+	if (seoData.jsonLd) score += 10;
+	if (seoData.robotsTxt) score += 10;
+	return score;
+  }
+  
+  function createProgressBar(score) {
+	return `<div class="progress-bar-container">
+			  <div class="progress-bar" style="width: ${score}%;"></div>
+			</div>
+			<div class="progress-score">${score}/100</div>`;
+  }
+  
   
   async function checkFileExistence(baseUrl, filePath) {
 	const url = new URL(filePath, baseUrl);

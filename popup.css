@@ -29,12 +29,6 @@ body {
 	border-radius: 8px 8px 0 0;
   }
   
-  h2 {
-	font-size: 18px;
-	color: #555;
-	margin-bottom: 10px;
-  }
-  
   .tabs {
 	display: flex;
 	justify-content: space-around;
@@ -83,8 +77,31 @@ body {
 	border-radius: 4px;
   }
   
-  .result-item strong {
-	font-weight: 600;
+  .recommendation-item {
+	margin-bottom: 10px;
+	padding: 8px;
+	background-color: #fffbe6;
+	border: 1px solid #ffd700;
+	border-radius: 4px;
+  }
+  
+  .progress-bar-container {
+	background-color: #e7e7e7;
+	border-radius: 4px;
+	margin-top: 10px;
+  }
+  
+  .progress-bar {
+	height: 20px;
+	background-color: #4CAF50;
+	border-radius: 4px;
+  }
+  
+  .progress-score {
+	text-align: center;
+	margin-top: 5px;
+	font-size: 16px;
+	font-weight: bold;
   }
   
   .tick, .cross {
@@ -122,15 +139,6 @@ body {
 	height: 40px;
 	animation: spin 1s linear infinite;
   }
-  
-  .recommendation-item {
-	margin-bottom: 10px;
-	padding: 8px;
-	background-color: #fffbe6;
-	border: 1px solid #ffd700;
-	border-radius: 4px;
-  }
-  
   
   @keyframes spin {
 	to { transform: rotate(360deg); }
