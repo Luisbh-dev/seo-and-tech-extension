@@ -1,115 +1,138 @@
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  width: 400px;
-  padding: 20px;
-  background: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 8px;
-}
-
-h1 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 10px;
-}
-
-.tabs {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.tablinks {
-  background-color: #e7e7e7;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.tablinks:hover {
-  background-color: #ddd;
-}
-
-.tablinks.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
-.tabcontent {
-  display: none;
-}
-
-#seoResults, #techResults, #cdnResults, #analyticsResults {
-  margin-top: 10px;
-}
-
-.result-item {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 8px;
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.result-item strong {
-  font-weight: 600;
-}
-
-.tick, .cross {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  line-height: 20px;
-  border-radius: 50%;
-  font-weight: bold;
-}
-
-.tick {
-  background-color: green;
-  color: white;
-}
-
-.cross {
-  background-color: red;
-  color: white;
-}
-
-.loading {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-}
-
-.spinner {
-  border: 4px solid rgba(0, 0, 0, 0.1);
-  border-left-color: #4CAF50;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+	font-family: 'Arial', sans-serif;
+	background-color: #f4f4f9;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+  }
+  
+  .container {
+	width: 400px;
+	height: 600px;
+	padding: 0;
+	background: #fff;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  h1 {
+	font-size: 24px;
+	color: #333;
+	margin: 0;
+	padding: 20px;
+	text-align: center;
+	background-color: #4CAF50;
+	color: white;
+	border-radius: 8px 8px 0 0;
+  }
+  
+  h2 {
+	font-size: 18px;
+	color: #555;
+	margin-bottom: 10px;
+  }
+  
+  .tabs {
+	display: flex;
+	justify-content: space-around;
+	background-color: #e7e7e7;
+	padding: 10px 0;
+  }
+  
+  .tablinks {
+	background-color: #e7e7e7;
+	border: none;
+	padding: 10px 20px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	font-size: 14px;
+	border-radius: 4px;
+  }
+  
+  .tablinks:hover {
+	background-color: #ddd;
+  }
+  
+  .tablinks.active {
+	background-color: #4CAF50;
+	color: white;
+  }
+  
+  .tabcontent {
+	display: none;
+	flex-grow: 1;
+	overflow-y: auto;
+	padding: 20px;
+  }
+  
+  #seoResults, #techResults, #cdnResults, #analyticsResults {
+	margin-top: 10px;
+  }
+  
+  .result-item {
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+  }
+  
+  .result-item strong {
+	font-weight: 600;
+  }
+  
+  .tick, .cross {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 50%;
+	font-weight: bold;
+  }
+  
+  .tick {
+	background-color: green;
+	color: white;
+  }
+  
+  .cross {
+	background-color: red;
+	color: white;
+  }
+  
+  .loading {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	height: 100px;
+  }
+  
+  .spinner {
+	border: 4px solid rgba(0, 0, 0, 0.1);
+	border-left-color: #4CAF50;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	animation: spin 1s linear infinite;
+  }
+  
+  .recommendation-item {
+	margin-bottom: 10px;
+	padding: 8px;
+	background-color: #fffbe6;
+	border: 1px solid #ffd700;
+	border-radius: 4px;
+  }
+  
+  
+  @keyframes spin {
+	to { transform: rotate(360deg); }
+  }
+  
