@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SEO & Tech Analyzer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>SEO & Tech Analyzer</h1>
+    <div class="tabs">
+      <button class="tablinks" id="openSEO">SEO</button>
+      <button class="tablinks" id="openTech">Technologies</button>
+      <button class="tablinks" id="openCDN">CDN</button>
+      <button class="tablinks" id="openAnalytics">Analytics</button>
+    </div>
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+    </div>
+    <div id="SEO" class="tabcontent">
+      <h2>SEO Analysis</h2>
+      <div id="seoResults"></div>
+    </div>
+    <div id="Tech" class="tabcontent">
+      <h2>Technologies</h2>
+      <div id="techResults"></div>
+    </div>
+    <div id="CDN" class="tabcontent">
+      <h2>CDN</h2>
+      <div id="cdnResults"></div>
+    </div>
+    <div id="Analytics" class="tabcontent">
+      <h2>Analytics</h2>
+      <div id="analyticsResults"></div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
