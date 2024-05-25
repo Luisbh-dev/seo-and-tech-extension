@@ -44,6 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			resultContainer.innerHTML += `<div class="result-item"><strong>Open Graph Tags:</strong> ${getIcon(seoData.openGraph)}</div>`;
 			resultContainer.innerHTML += `<div class="result-item"><strong>JSON-LD:</strong> ${getIcon(seoData.jsonLd)}</div>`;
 			resultContainer.innerHTML += `<div class="result-item"><strong>OWL (Web Ontology Language):</strong> ${getIcon(seoData.owl)}</div>`;
+			const seoRecommendations = generateSEORecommendations(seoData);
+			const recommendationContainer = document.getElementById('seoRecommendations');
+			recommendationContainer.innerHTML = '<h2>SEO Recommendations</h2>';
+			seoRecommendations.forEach(rec => {
+ 			recommendationContainer.innerHTML += `<div class="recommendation-item">${rec}</div>`;
+			});
 		  }
 		  hideLoading();
 		}
@@ -175,6 +181,28 @@ document.addEventListener('DOMContentLoaded', () => {
 	  owl: false // Valor por defecto, se actualizará después
 	};
 	return seoData;
+  }
+
+  function generateSEORecommendations(seoData) {
+	const recommendations = [];
+  
+	if (seoData.titleLength < 50 || seoData.titleLength > 60) {
+	  recommendations.push("The title should be between 50 and 60 characters long.");
+	}
+  
+	if (seoData.metaDescriptionLength < 150 || seoData.metaDescriptionLength > 160) {
+	  recommendations.push("The meta description should be between 150 and 160 characters long.");
+	}
+  
+	if (seoData.h1 === 0) {
+	  recommendations.push("Add at least one H1 tag.");
+	}
+  
+	if (seoData.imagesWithoutAlt > 0) {
+	  recommendations.push(`Add alt tags to the ${seoData.imagesWithoutAlt} images that are missing them.`);
+	}
+  
+	return recommendations;
   }
   
   async function checkFileExistence(baseUrl, filePath) {

@@ -123,6 +123,15 @@ body {
 	animation: spin 1s linear infinite;
   }
   
+  .recommendation-item {
+	margin-bottom: 10px;
+	padding: 8px;
+	background-color: #fffbe6;
+	border: 1px solid #ffd700;
+	border-radius: 4px;
+  }
+  
+  
   @keyframes spin {
 	to { transform: rotate(360deg); }
   }
