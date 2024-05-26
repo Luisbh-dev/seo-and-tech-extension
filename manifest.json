@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SEO & Tech Analyzer",
-  "version": "1.4",
+  "version": "1.5",
   "description": "Analyze SEO and technology stack of websites.",
   "icons": {
     "128": "icons/seo_tech_analyzer_icon.png"
@@ -14,16 +14,7 @@
     "activeTab",
     "scripting"
   ],
-  "host_permissions": [
-    "*://*/*"
-  ],
   "background": {
     "service_worker": "js/background.js"
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["js/seo.js", "js/technologies.js", "js/cdn.js", "js/analytics.js", "js/security.js"]
-    }
-  ]
+  }
 }
