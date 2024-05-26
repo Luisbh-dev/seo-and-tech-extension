@@ -24,11 +24,15 @@ function detectTechnologies() {
     "React": !!document.querySelector('[data-reactroot], [data-reactid]'),
     "Vue.js": !!document.querySelector('[data-vue-root], [data-vue-version]'),
     "Next.js": !!document.querySelector('script[src*="_next/static"]'),
-    "Astro": !!document.querySelector('astro-island') || !!document.querySelector('script[src*="astro/client"]'),
-    "jQuery": !!window.jQuery,
+    "Astro": !!document.querySelector('astro-island') || !!document.querySelector('script[src*="astro/client"]') || 
+             !!document.querySelector('[data-astro]') || 
+             !!Array.from(document.querySelectorAll('*')).some(el => Array.from(el.attributes).some(attr => attr.name.startsWith('data-astro'))),
+    "jQuery": !!window.jQuery || !!document.querySelector('script[src*="jquery.js"]') || 
+              !!document.querySelector('script[src*="jquery-migrate"]') || 
+              !!document.querySelector('script[src*="jquery"]'),
 
     // CSS Frameworks
-    "Bootstrap": !!document.querySelector('link[href*="bootstrap"]'),
+    "Bootstrap": !!document.querySelector('link[href*="bootstrap"]') || !!document.querySelector('script[src*="bootstrap"]'),
     "Foundation": !!document.querySelector('link[href*="foundation"]'),
     "Bulma": !!document.querySelector('link[href*="bulma"]'),
     "Tailwind CSS": !!document.querySelector('link[href*="tailwind"]'),

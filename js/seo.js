@@ -35,10 +35,23 @@ function extractSEOData() {
   }
   
   async function checkOWL() {
-    return document.querySelector('link[type="application/rdf+xml"], script[type="application/ld+json"][src*="owl"]') !== null ||
+    const rdfElement = document.querySelector('rdf\\:RDF');
+    const rdfaElements = document.querySelectorAll('[typeof]');
+    const owlFiles = Array.from(document.querySelectorAll('link[rel="alternate"][type="application/rdf+xml"], link[rel="alternate"][type="application/owl+xml"], script[type="application/ld+json"]'))
+      .filter(link => link.href && link.href.endsWith('.owl'));
+    const owlClasses = document.querySelectorAll('[typeof*="owl:"]');
+    const owlProperties = document.querySelectorAll('[property*="owl:"]');
+  
+    return rdfElement !== null ||
+           rdfaElements.length > 0 ||
+           owlFiles.length > 0 ||
+           owlClasses.length > 0 ||
+           owlProperties.length > 0 ||
+           document.querySelector('link[type="application/rdf+xml"], script[type="application/ld+json"][src*="owl"]') !== null ||
            document.querySelector('[typeof], [property], [resource]') !== null ||
            [...document.querySelectorAll('script, link')].some(el => /owl/i.test(el.src || el.href));
   }
+  
   
   function generateSEORecommendations(seoData) {
     const recommendations = [];
