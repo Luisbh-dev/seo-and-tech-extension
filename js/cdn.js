@@ -1,17 +1,21 @@
 function detectCDNs() {
-    const cdnData = {
-      "Cloudflare": !!document.querySelector('script[src*="cloudflare.com"]'),
-      "Akamai": !!document.querySelector('script[src*="akamaized.net"]'),
-      "Amazon CloudFront": !!document.querySelector('script[src*="cloudfront.net"]'),
-      "Fastly": !!document.querySelector('script[src*="fastly.net"]'),
-      "StackPath": !!document.querySelector('script[src*="stackpathdns.com"]'),
-      "unpkg": !!document.querySelector('script[src*="unpkg.com"]'),
-      "jsDelivr": !!document.querySelector('script[src*="cdn.jsdelivr.net"]'),
-      "Other/Custom domain": !!document.querySelector('script[src*="cdn."]') || 
-                             !!document.querySelector('script[src*="media."]') || 
-                             !!document.querySelector('script[src*="assets."]') || 
-                             !!document.querySelector('script[src*="content."]')
-    };
-    return cdnData;
+	const patterns = [
+	  { name: "Cloudflare", pattern: /cloudflare\.com/ },
+	  { name: "Akamai", pattern: /akamaized\.net/ },
+	  { name: "Amazon CloudFront", pattern: /cloudfront\.net/ },
+	  { name: "Fastly", pattern: /fastly\.net/ },
+	  { name: "StackPath", pattern: /stackpathdns\.com/ },
+	  { name: "unpkg", pattern: /unpkg\.com/ },
+	  { name: "jsDelivr", pattern: /cdn\.jsdelivr\.net/ },
+	  { name: "Other/Custom domain", pattern: /cdn\d*\..*|media\d*\..*|assets\d*\..*|content\d*\..*/ }
+	];
+  
+	const cdnData = {};
+	
+	patterns.forEach(cdn => {
+	  cdnData[cdn.name] = !!Array.from(document.querySelectorAll('script[src], link[href]')).find(el => cdn.pattern.test(el.src || el.href));
+	});
+  
+	return cdnData;
   }
   
