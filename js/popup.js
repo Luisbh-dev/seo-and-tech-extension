@@ -1,5 +1,3 @@
-// js/popup.js
-
 document.addEventListener('DOMContentLoaded', () => {
 	document.getElementById('openSEO').addEventListener('click', (event) => openTab(event, 'SEO'));
 	document.getElementById('openTech').addEventListener('click', (event) => openTab(event, 'Tech'));
@@ -76,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			resultContainer.innerHTML = '';
   
 			// CMS
+			resultContainer.innerHTML += '<h3>Content Management Systems (CMS)</h3>';
 			const cmsOrder = ["WordPress", "PrestaShop", "Adobe Experience Manager", "Drupal", "Joomla"];
 			cmsOrder.forEach(tech => {
 			  if (techData.hasOwnProperty(tech)) {
@@ -87,8 +86,33 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
   
 			// Front-end Technologies
+			resultContainer.innerHTML += '<h3>Front-end Technologies</h3>';
 			const frontEndOrder = ["Angular", "React", "Vue.js", "Next.js", "Astro", "jQuery"];
 			frontEndOrder.forEach(tech => {
+			  if (techData.hasOwnProperty(tech)) {
+				const div = document.createElement('div');
+				div.className = 'result-item';
+				div.innerHTML = `<strong>${tech}:</strong> ${getIcon(techData[tech])}`;
+				resultContainer.appendChild(div);
+			  }
+			});
+  
+			// CSS Frameworks
+			resultContainer.innerHTML += '<h3>CSS Frameworks</h3>';
+			const cssFrameworks = ["Bootstrap", "Foundation", "Bulma", "Tailwind CSS"];
+			cssFrameworks.forEach(tech => {
+			  if (techData.hasOwnProperty(tech)) {
+				const div = document.createElement('div');
+				div.className = 'result-item';
+				div.innerHTML = `<strong>${tech}:</strong> ${getIcon(techData[tech])}`;
+				resultContainer.appendChild(div);
+			  }
+			});
+  
+			// JavaScript Libraries
+			resultContainer.innerHTML += '<h3>JavaScript Libraries</h3>';
+			const jsLibraries = ["Lodash", "D3.js", "Chart.js", "Three.js", "Moment.js"];
+			jsLibraries.forEach(tech => {
 			  if (techData.hasOwnProperty(tech)) {
 				const div = document.createElement('div');
 				div.className = 'result-item';
