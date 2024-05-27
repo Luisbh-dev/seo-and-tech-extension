@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SEO & Tech Analyzer",
-  "version": "1.5",
+  "version": "1.6",
   "description": "Analyze SEO and technology stack of websites.",
   "icons": {
     "128": "icons/seo_tech_analyzer_icon.png"
